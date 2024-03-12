@@ -1,41 +1,52 @@
+import { parseValue } from 'graphql';
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, TextInput, Button } from 'react-native';
 
-const students = []
-
-
-
 const StudentFormScreen = () => {
-  return (
+
+const studentForm = []
+
+    const [tuition , setTuition] = useState('')
+    const [name , setName] = useState('')
+    const [lastName , setLastName] = useState('')
+    const [grade , setGrade] = useState('')
+    const [average , setAverage] = useState('')
+
+const add = () => {
+    const resp = parseValue(tuition).parseValue(name).parseValue(lastName).parseValue(grade).parseValue(average)
+    console.log(resp)
+}
+
+return (
     <View style={styles.container}>
     <View style={styles.body}>
       <Text style={styles.title}>Ingresa los datos del Estudiante</Text>
       <TextInput
         style={styles.textInput}
-        onChangeText={(text) => setValue1(text)}
+        onChangeText={(text) => setTuition(text)}
         placeholder="Ingresa tu matricula"
       />
       <TextInput
         style={styles.textInput}
-        onChangeText={(text) => setValue2(text)}
+        onChangeText={(text) => setName(text)}
         placeholder="Ingresa tu nombre"
       />
       <TextInput
         style={styles.textInput}
-        onChangeText={(text) => setValue3(text)}
+        onChangeText={(text) => setLastName(text)}
         placeholder="Ingresa tus apellidos"
       />
       <TextInput
         style={styles.textInput}
-        onChangeText={(text) => setValue4(text)}
+        onChangeText={(text) => setGrade(text)}
         placeholder="Ingresa tu grado"
       />
       <TextInput
         style={styles.textInput}
-        onChangeText={(text) => setValue5(text)}
+        onChangeText={(text) => setAverage(text)}
         placeholder="Ingresa tu promedio"
       />
-        <Button title='Guardar' onPress={() => navigation.navigate('StudentFormScreen')}/>
+        <Button title='Guardar' onPress={add}/>
     </View>
   </View>
   )
