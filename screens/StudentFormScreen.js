@@ -2,9 +2,9 @@ import { parseValue } from 'graphql';
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, TextInput, Button } from 'react-native';
 
-const StudentFormScreen = () => {
+export const studentForm = []
 
-const studentForm = []
+const StudentFormScreen = ({ navigation }) => {
 
     const [tuition , setTuition] = useState('')
     const [name , setName] = useState('')
@@ -21,6 +21,7 @@ const add = () => {
       average : average
   }
   studentForm.push(studentData)
+  navigation.navigate('HomeScreen');
   console.log(studentForm)
 }
 
@@ -119,5 +120,5 @@ const styles = StyleSheet.create({
       fontWeight: 'bold',
     },
   });
-  
+
 export default StudentFormScreen
