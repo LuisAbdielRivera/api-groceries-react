@@ -3,22 +3,22 @@ import { View, Text, StyleSheet, Button } from 'react-native';
 import { studentForm } from './StudentFormScreen';
 
 const HomeScreen = ({ navigation }) => {
+
+    
+
   return (
     <View>
         <Button title='Nuevo'onPress={() => navigation.navigate('StudentFormScreen')}/>
         <View style={styles.studentList}>
                 {studentForm.map((student, index) => (
                     <View key={index} style={styles.studentItem}>
-                        <Text style={styles.label}>Matricula:</Text>
-                        <Text style={styles.value}>{student.tuition}</Text>
-                        <Text style={styles.label}>Nombre:</Text>
-                        <Text style={styles.value}>{student.name}</Text>
-                        <Text style={styles.label}>Apellido:</Text>
-                        <Text style={styles.value}>{student.lastName}</Text>
-                        <Text style={styles.label}>Grado:</Text>
-                        <Text style={styles.value}>{student.grade}</Text>
-                        <Text style={styles.label}>Promedio:</Text>
-                        <Text style={styles.value}>{student.average}</Text>
+                        <Text style={styles.label}>Matricula: {student.tuition}</Text>
+                        <Text style={styles.label}>Nombre: {student.name}</Text>
+                        <Text style={styles.label}>Apellido: {student.lastName}</Text>
+                        <Text style={styles.label}>Grado: {student.grade}</Text>
+                        <Text style={styles.label}>Promedio: {student.average}</Text>
+                        <Button title='Editar'onPress={() => navigation.navigate('EditStudentFormScreen')}/>
+                        <Button title='Eliminar'/>
                     </View>
                 ))}
             </View>
