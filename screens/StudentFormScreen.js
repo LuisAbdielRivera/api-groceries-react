@@ -13,8 +13,15 @@ const studentForm = []
     const [average , setAverage] = useState('')
 
 const add = () => {
-    const resp = parseValue(tuition).parseValue(name).parseValue(lastName).parseValue(grade).parseValue(average)
-    console.log(resp)
+  const studentData = {
+      tuition : tuition,
+      name : name,
+      lastName : lastName,
+      grade : grade,
+      average : average
+  }
+  studentForm.push(studentData)
+  console.log(studentForm)
 }
 
 return (
