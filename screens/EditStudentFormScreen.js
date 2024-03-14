@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, TextInput, Button } from 'react-native';
 import { studentForm } from './StudentFormScreen';
+import { useNavigation } from '@react-navigation/native'
 
 const EditStudentFormScreen = ({route, index}) => {
 
+  const navigation = useNavigation()
   const { student } = route.params
 
   const [tuition, setTuition] = useState(student.tuition);
@@ -22,7 +24,7 @@ const EditStudentFormScreen = ({route, index}) => {
       average: average
     }
 
-    studentForm.splice(index, 1);
+    student.splice(index, 1);
     studentForm.push(updatedStudentData)
     console.log(updatedStudentData)
     navigation.navigate('HomeScreen')
