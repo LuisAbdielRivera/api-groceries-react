@@ -1,39 +1,54 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, TextInput, Button } from 'react-native';
 
-const EditStudentFormScreen = () => {
+const EditStudentFormScreen = ({route}) => {
+
+  const { student } = route.params; 
+
+  const [tuition, setTuition] = useState(student.tuition);
+  const [name, setName] = useState(student.name);
+  const [lastName, setLastName] = useState(student.lastName);
+  const [grade, setGrade] = useState(student.grade);
+  const [average, setAverage] = useState(student.average);
+
+
   return (
     <View style={styles.container}>
-    <View style={styles.body}>
-      <Text style={styles.title}>Edita los datos del Estudiante</Text>
-      <TextInput
-        style={styles.textInput}
-        onChangeText={(text) => setValue1(text)}
-        placeholder="Ingresa tu matricula"
-      />
-      <TextInput
-        style={styles.textInput}
-        onChangeText={(text) => setValue2(text)}
-        placeholder="Ingresa tu nombre"
-      />
-      <TextInput
-        style={styles.textInput}
-        onChangeText={(text) => setValue3(text)}
-        placeholder="Ingresa tus apellidos"
-      />
-      <TextInput
-        style={styles.textInput}
-        onChangeText={(text) => setValue4(text)}
-        placeholder="Ingresa tu grado"
-      />
-      <TextInput
-        style={styles.textInput}
-        onChangeText={(text) => setValue5(text)}
-        placeholder="Ingresa tu promedio"
-      />
-        <Button title='Guardar' onPress={() => navigation.navigate('StudentFormScreen')}/>
+      <View style={styles.body}>
+        <Text style={styles.title}>Edita los datos del Estudiante</Text>
+        <TextInput
+          style={styles.textInput}
+          onChangeText={setTuition}
+          value={tuition}
+          placeholder="Ingresa tu matricula"
+        />
+        <TextInput
+          style={styles.textInput}
+          onChangeText={setName}
+          value={name}
+          placeholder="Ingresa tu nombre"
+        />
+        <TextInput
+          style={styles.textInput}
+          onChangeText={setLastName}
+          value={lastName}
+          placeholder="Ingresa tus apellidos"
+        />
+        <TextInput
+          style={styles.textInput}
+          onChangeText={setGrade}
+          value={grade}
+          placeholder="Ingresa tu grado"
+        />
+        <TextInput
+          style={styles.textInput}
+          onChangeText={setAverage}
+          value={average}
+          placeholder="Ingresa tu promedio"
+        />
+        <Button title='Guardar' onPress={saveChanges} />
+      </View>
     </View>
-  </View>
   )
 }
 
