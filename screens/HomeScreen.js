@@ -19,18 +19,20 @@ const HomeScreen = ({ navigation }) => {
     }
 
   return (
-    <View>
-        <Button title='Nuevo'onPress={() => navigation.navigate('StudentFormScreen')}/>
-        <View style={styles.studentList}>
+    <View style={styles.container}>
+            <Button title='Nuevo Estudiante' onPress={() => navigation.navigate('StudentFormScreen')} color='#007bff' />
+            <View style={styles.studentList}>
                 {studentForm.map((student, index) => (
                     <View key={index} style={styles.studentItem}>
-                        <Text style={styles.label}>Matricula: {student.tuition}</Text>
+                        <Text style={styles.label}>Matrícula: {student.tuition}</Text>
                         <Text style={styles.label}>Nombre: {student.name}</Text>
                         <Text style={styles.label}>Apellido: {student.lastName}</Text>
                         <Text style={styles.label}>Grado: {student.grade}</Text>
                         <Text style={styles.label}>Promedio: {student.average}</Text>
-                        <Button title='Editar' onPress={() => { navigation.navigate("EditStudentFormScreen", { student, index })}}/>
-                        <Button title='Eliminar' onPress={() => deleteStudent(index)}/>
+                        <View style={styles.buttonContainer}>
+                            <Button title='Editar' onPress={() => { navigation.navigate("EditStudentFormScreen", { student, index }) }} color='#28a745' />
+                            <Button title='Eliminar' onPress={() => deleteStudent(index)} color='#dc3545' />
+                        </View>
                     </View>
                 ))}
             </View>
@@ -41,17 +43,19 @@ const HomeScreen = ({ navigation }) => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#ffffff',
         padding: 20,
+        backgroundColor: '#f8f9fa',
     },
     studentList: {
         marginTop: 20,
     },
     studentItem: {
-        backgroundColor: '#f9f9f9',
+        marginBottom: 20,
+        padding: 20,
+        backgroundColor: '#ffffff',
         borderRadius: 10,
-        padding: 10,
-        marginBottom: 10,
+        borderWidth: 1,
+        borderColor: '#ced4da',
         shadowColor: '#000',
         shadowOffset: {
             width: 0,
@@ -62,11 +66,14 @@ const styles = StyleSheet.create({
         elevation: 5,
     },
     label: {
-        fontWeight: 'bold',
+        fontSize: 16,
         marginBottom: 5,
+        color: '#495057',
     },
-    value: {
-        marginBottom: 10,
+    buttonContainer: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        marginTop: 10,
     },
 });
 
