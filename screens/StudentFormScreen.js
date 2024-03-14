@@ -20,7 +20,7 @@ const add = () => {
       average : average
   }
   studentForm.push(studentData)
-  navigation.navigate('HomeScreen');
+  navigation.navigate('HomeScreen')
   console.log(studentForm)
 }
 

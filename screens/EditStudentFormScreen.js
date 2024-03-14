@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, TextInput, Button } from 'react-native';
+import { studentForm } from './StudentFormScreen';
+import { useNavigation } from '@react-navigation/native';
 
-const EditStudentFormScreen = ({route}) => {
-
+const EditStudentFormScreen = ({route, index}) => {
+  const navigation = useNavigation();
   const { student } = route.params; 
 
   const [tuition, setTuition] = useState(student.tuition);
@@ -11,6 +13,21 @@ const EditStudentFormScreen = ({route}) => {
   const [grade, setGrade] = useState(student.grade);
   const [average, setAverage] = useState(student.average);
 
+  const update = () => {
+    
+    const updatedStudentData = {
+      tuition: tuition,
+      name: name,
+      lastName: lastName,
+      grade: grade,
+      average: average
+    }
+
+    studentForm.splice(index, 1);
+    studentForm.push(updatedStudentData)
+    console.log(updatedStudentData)
+    navigation.navigate('HomeScreen')
+  }
 
   return (
     <View style={styles.container}>
@@ -18,35 +35,35 @@ const EditStudentFormScreen = ({route}) => {
         <Text style={styles.title}>Edita los datos del Estudiante</Text>
         <TextInput
           style={styles.textInput}
-          onChangeText={setTuition}
+          onChangeText={(text) => setTuition(text)}
           value={tuition}
           placeholder="Ingresa tu matricula"
         />
         <TextInput
           style={styles.textInput}
-          onChangeText={setName}
+          onChangeText={(text) => setName(text)}
           value={name}
           placeholder="Ingresa tu nombre"
         />
         <TextInput
           style={styles.textInput}
-          onChangeText={setLastName}
+          onChangeText={(text) => setLastName(text)}
           value={lastName}
           placeholder="Ingresa tus apellidos"
         />
         <TextInput
           style={styles.textInput}
-          onChangeText={setGrade}
+          onChangeText={(text) => setGrade(text)}
           value={grade}
           placeholder="Ingresa tu grado"
         />
         <TextInput
           style={styles.textInput}
-          onChangeText={setAverage}
+          onChangeText={(text) => setAverage(text)}
           value={average}
           placeholder="Ingresa tu promedio"
         />
-        <Button title='Guardar' onPress={saveChanges} />
+        <Button title='Actualizar' onPress={update}/>
       </View>
     </View>
   )

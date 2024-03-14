@@ -9,14 +9,14 @@ const HomeScreen = ({ navigation }) => {
     useEffect(() => {
         setTimeout(() => {
             setCount((count) => count + 1);
-                }, 1000);
-            });
+            }, 1000);
+        });
 
     const deleteStudent = (index) => {
         studentForm.splice(index, 1);
         setCount(count)
         console.log(studentForm)
-    }    
+    }
 
   return (
     <View>
@@ -29,8 +29,8 @@ const HomeScreen = ({ navigation }) => {
                         <Text style={styles.label}>Apellido: {student.lastName}</Text>
                         <Text style={styles.label}>Grado: {student.grade}</Text>
                         <Text style={styles.label}>Promedio: {student.average}</Text>
-                        <Button title='Editar'onPress={() => { navigation.navigate("EditStudentFormScreen", { student })}}/>
-                        <Button title='Eliminar'onPress={() => deleteStudent(index)}/>
+                        <Button title='Editar' onPress={() => { navigation.navigate("EditStudentFormScreen", { student, index })}}/>
+                        <Button title='Eliminar' onPress={() => deleteStudent(index)}/>
                     </View>
                 ))}
             </View>
