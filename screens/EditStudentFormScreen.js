@@ -14,7 +14,7 @@ const EditStudentFormScreen = ({route, index}) => {
   const [grade, setGrade] = useState(student.grade);
   const [average, setAverage] = useState(student.average);
 
-  const update = () => {
+  const update = (index) => {
     
     const updatedStudentData = {
       tuition: tuition,
@@ -24,7 +24,7 @@ const EditStudentFormScreen = ({route, index}) => {
       average: average
     }
 
-    student.splice(index, 1);
+    studentForm.splice(index, 1);
     studentForm.push(updatedStudentData)
     console.log(updatedStudentData)
     navigation.navigate('HomeScreen')
@@ -64,7 +64,7 @@ const EditStudentFormScreen = ({route, index}) => {
           value={average}
           placeholder="Ingresa tu promedio"
         />
-        <Button title='Actualizar' onPress={update}/>
+        <Button title='Actualizar' onPress={() => update(index)}/>
       </View>
     </View>
   )
