@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, TextInput, Button } from 'react-native';
 import { studentForm } from './StudentFormScreen';
-import { useNavigation } from '@react-navigation/native';
 
 const EditStudentFormScreen = ({route, index}) => {
-  const navigation = useNavigation();
-  const { student } = route.params; 
+
+  const { student } = route.params
 
   const [tuition, setTuition] = useState(student.tuition);
   const [name, setName] = useState(student.name);
